@@ -4,14 +4,13 @@
 #
 Name     : dfc
 Version  : 3.1.0
-Release  : 3
+Release  : 4
 URL      : https://projects.gw-computing.net/attachments/download/614/dfc-3.1.0.tar.gz
 Source0  : https://projects.gw-computing.net/attachments/download/614/dfc-3.1.0.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: dfc-bin
-Requires: dfc-config
 Requires: dfc-doc
 Requires: dfc-locales
 Requires: dfc-data
@@ -27,18 +26,9 @@ show mount options and so on.
 Summary: bin components for the dfc package.
 Group: Binaries
 Requires: dfc-data
-Requires: dfc-config
 
 %description bin
 bin components for the dfc package.
-
-
-%package config
-Summary: config components for the dfc package.
-Group: Default
-
-%description config
-config components for the dfc package.
 
 
 %package data
@@ -73,15 +63,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1496784595
+export SOURCE_DATE_EPOCH=1496784964
 mkdir clr-build
 pushd clr-build
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DXDG_CONFIG_DIRXDG_CONFIG_DIR=/usr/share/xdg
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=%{_libdir} -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DXDG_CONFIG_DIR=/usr/share/xdg
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1496784595
+export SOURCE_DATE_EPOCH=1496784964
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -95,16 +85,13 @@ popd
 %defattr(-,root,root,-)
 /usr/bin/dfc
 
-%files config
-%defattr(-,root,root,-)
-%config /usr/etc/xdg/dfc/dfcrc
-%config /usr/etc/xdg/dfc/fr/dfcrc
-%config /usr/etc/xdg/dfc/nl/dfcrc
-
 %files data
 %defattr(-,root,root,-)
 %exclude /usr/share/man/fr/man1/dfc.1
 %exclude /usr/share/man/nl/man1/dfc.1
+%exclude /usr/share/xdg/dfc/fr/dfcrc
+%exclude /usr/share/xdg/dfc/nl/dfcrc
+/usr/share/xdg/dfc/dfcrc
 
 %files doc
 %defattr(-,root,root,-)
