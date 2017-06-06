@@ -1,2 +1,6 @@
 # This file contains the output files that need %exclude. Full path
 # names, one per line.
+/usr/share/xdg/dfc/fr/dfcrc
+/usr/share/xdg/dfc/nl/dfcrc
+/usr/share/man/fr/man1/dfc.1
+/usr/share/man/nl/man1/dfc.1
