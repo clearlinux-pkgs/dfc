@@ -4,7 +4,7 @@
 #
 Name     : dfc
 Version  : 3.1.1
-Release  : 8
+Release  : 9
 URL      : https://projects.gw-computing.net/attachments/download/615/dfc-3.1.1.tar.gz
 Source0  : https://projects.gw-computing.net/attachments/download/615/dfc-3.1.1.tar.gz
 Summary  : No detailed summary available
